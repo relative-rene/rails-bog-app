@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-resources :creatures
+root "creatures#index"
 
+get '/creatures', to: "creatures#index", as:"creatures"
 
 end
