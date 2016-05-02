@@ -1,4 +1,6 @@
-<h1><%= @creatures.each do |c| %></h1>
-  <%= c.name %>
-  <%= c.description %>
+<%= @creatures.each do |c| %>
+  <p>
+    <strong>Name:</strong><%= c.name %><br>
+    <strong>Description:</strong><%= c.description %>
+  <p>
 <% end %>
