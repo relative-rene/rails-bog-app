@@ -7,7 +7,7 @@ class CreaturesController < ApplicationController
   end
 
   def new
-    @creatures = Creature.new
+    @creature = Creature.new
     render :new
 
   end
@@ -23,7 +23,6 @@ class CreaturesController < ApplicationController
 
   def show
     creature_id = params[:id]
-
     @creature = Creature.find_by_id(creature_id)
     render :show
   end
@@ -41,10 +40,14 @@ class CreaturesController < ApplicationController
     creature_params = params.require(:creature).permit(:name, :description)
     creature.update_attributes(creature_params)
 
-    redirect_to creatures_path(creature)
+    redirect_to creature_path(creature)
   end
 
-  def delete
+  def destroy
+    creature_id = params[:id]
+    creature = Creature.find_by_id(creature_id)
+    creature.destroy
+    redirect_to creatures_path
   end
 
 end
